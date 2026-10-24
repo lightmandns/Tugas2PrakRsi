@@ -3,7 +3,36 @@ import swaggerAutogen from 'swagger-autogen';
 const doc = {
   info: { title: 'Review Kantin API', version: '1.0.0' },
   servers: [{ url: 'http://localhost:3000' }],
+  // 1. Tambahkan konfigurasi keamanan JWT di sini
+  securityDefinitions: {
+    bearerAuth: {
+      type: 'apiKey',
+      in: 'header',
+      name: 'Authorization',
+      description: 'Masukkan token JWT dengan format: Bearer <token>'
+    }
+  },
+  security: [{ bearerAuth: [] }],
   definitions: {
+    // 2. Tambahkan input khusus untuk Register dan Login
+    RegisterInput: {
+      type: 'object',
+      required: ['name', 'email', 'password'],
+      properties: {
+        name: { type: 'string', example: 'Budi' },
+        email: { type: 'string', example: 'budi@example.com' },
+        password: { type: 'string', example: 'rahasia123' },
+      },
+    },
+    LoginInput: {
+      type: 'object',
+      required: ['email', 'password'],
+      properties: {
+        email: { type: 'string', example: 'budi@example.com' },
+        password: { type: 'string', example: 'rahasia123' },
+      },
+    },
+    // Definisi bawaan Anda sebelumnya
     StallInput: {
       type: 'object',
       required: ['ownerId', 'name'],
