@@ -12,6 +12,13 @@ const JWT_SECRET = process.env.JWT_SECRET || 'rahasia_negara';
 export const authenticate = (req: Request, res: Response, next: NextFunction) => {
   try {
     const authHeader = req.headers.authorization;
+    
+    console.log("Header yang diterima server:", authHeader); 
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      throw new UnauthorizedError('Belum/tidak terautentikasi'); 
+    }
+    
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       // 401: Belum/tidak terautentikasi
       throw new UnauthorizedError('Belum/tidak terautentikasi'); 
