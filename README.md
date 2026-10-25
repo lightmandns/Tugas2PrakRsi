@@ -1,4 +1,4 @@
-# Hands-on 2 — Akses Database dengan Drizzle ORM
+# Belum diubah, malassssssss
 
 Hands-on ini mengganti akses data dari query SQL manual menjadi **ORM (Drizzle)**,
 tetap memakai arsitektur berlapis (Repository → Service → Controller → Router).
